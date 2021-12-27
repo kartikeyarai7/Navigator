@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Dubai Map with Search</title>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.22/"></script>
+    <script>
+      require(['esri/config', 'esri/Map', 'esri/views/MapView', 'esri/widgets/Search'], function (esriConfig, Map, MapView, Search) {
+        esriConfig.apiKey = 'KEY_HERE';
+
+        const map = new Map({
+          basemap: 'arcgis-topographic'
+        });
+        const view = new MapView({
+          map: map,
+          center: [55.2, 25.2],
+          zoom: 13,
+          container: 'viewDiv'
+        });
+        const search = new Search({
+          view: view
+        });
+        view.ui.add(search, 'top-right');
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="home.html">Home</a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Places</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="geocoding.html">Geocoding</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="map.html">Map</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="p-3">
+      <div id="viewDiv"></div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esri Map API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@3.0.0/dist/umd/request.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-auth@3.0.0/dist/umd/auth.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@3.0.0/dist/umd/geocoding.umd.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="home.html">Home</a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Places</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="geocoding.html">Geocoding</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="map.html">Map</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="p-3">
+      <h3 class="text-center mt-3">Search for places</h3>
+      <div class="m-5 w-75 mx-auto">
+        <form class="ms-auto">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name : </label>
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Coffee Shop" required />
+          </div>
+          <div class="mb-3">
+            <label for="exampleAddress1" class="form-label">Point Of Reference : </label>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" id="lon" aria-describedby="emailHelp" placeholder="Current Longitude" />
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="lat" aria-describedby="emailHelp" placeholder="Current Latitude" />
+              </div>
+            </div>
+
+            <span id="curLoc"></span>
+          </div>
+          <div class="mb-3">
+            <label for="exampleAddress1" class="form-label">Maximum distance (m) : </label>
+            <input type="text" class="form-control" id="dmax" aria-describedby="emailHelp" placeholder="2000" required />
+          </div>
+          <div class="mb-3">
+            <label for="exampleAddress1" class="form-label">Maximum number of results: </label>
+            <input type="text" class="form-control" id="rmax" aria-describedby="emailHelp" placeholder="20" required />
+          </div>
+
+          <button type="button" class="btn btn-primary" id="sub">Search</button>
+        </form>
+      </div>
+      <section class="p-3">
+        <h3 class="text-center">Results</h3>
+        <div>
+          <div class="row" id="cardContainer"></div>
+        </div>
+      </section>
+    </section>
+    <script src="./src/index2.js"></script>
+  </body>
+</html>
